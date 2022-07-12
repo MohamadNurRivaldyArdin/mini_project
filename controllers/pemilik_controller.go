@@ -40,21 +40,21 @@ func GetPemilikController(c echo.Context) error {
 }
 
 func DeletePemilikController(c echo.Context) error {
-	stringId := c.Param("ID")
-	err := config.DB.Delete(&model.Pemilik{}, "ID = ?", stringId).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Delete(&model.Pemilik{}, "Id = ?", stringId).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete account with ID `" + stringId + "`",
+		"message": "success delete account with Id `" + stringId + "`",
 	})
 }
 
 func UpdatePemilikController(c echo.Context) error {
 	pemilik := model.Pemilik{}
 	c.Bind(&pemilik)
-	stringId := c.Param("ID")
-	err := config.DB.Model(&pemilik).Where("ID = ?", stringId).Updates(pemilik).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Model(&pemilik).Where("Id = ?", stringId).Updates(pemilik).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

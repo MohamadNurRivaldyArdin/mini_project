@@ -27,13 +27,13 @@ func CreatePengunjungController(c echo.Context) error {
 func GetPengunjungByIdController(c echo.Context) error {
 	var pengunjung model.Pengunjung
 
-	stringId := c.Param("ID")
-	err := config.DB.First(&pengunjung, "ID = ?", stringId).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.First(&pengunjung, "Id = ?", stringId).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message":    "success get pengunjung by id",
+		"message":    "success get pengunjung by Id",
 		"pengunjung": pengunjung,
 	})
 }
@@ -60,15 +60,15 @@ func DeletePengunjungController(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete account with pengunjung `" + stringId + "`",
+		"message": "success delete account with Idpengunjung `" + stringId + "`",
 	})
 }
 
 func UpdatePengunjungController(c echo.Context) error {
 	pengunjung := model.Pengunjung{}
 	c.Bind(&pengunjung)
-	stringId := c.Param("ID")
-	err := config.DB.Model(&pengunjung).Where("ID = ?", stringId).Updates(pengunjung).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Model(&pengunjung).Where("Id = ?", stringId).Updates(pengunjung).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

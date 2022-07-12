@@ -3,11 +3,11 @@ package model
 import "time"
 
 type Pemesanan struct {
-	ID_Pemesanan  int       `gorm:"primaryKey" json:"ID_Pemesanan"`
+	Id            int       `gorm:"primaryKey" json:"Id"`
 	Tgl_Pemesanan time.Time `json:"Tgl_Pemesanan"`
 	Tgl_Keluar    time.Time `json:"Tgl_Keluar"`
-	PENGUNJUNG_ID int       `json:"PENGUNJUNG_ID"`
-	KOST_ID_Kost  int       `json:"KOST_ID_Kost"`
+	Pengunjung_Id int       `json:"Pengunjung_Id"`
+	Kost_Id       int       `json:"Kost_Id"`
 }
 
 func (Pemesanan) TableName() string {

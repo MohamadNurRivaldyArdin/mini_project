@@ -40,21 +40,21 @@ func GetKostController(c echo.Context) error {
 }
 
 func DeleteKostController(c echo.Context) error {
-	stringId := c.Param("ID_Kost")
-	err := config.DB.Delete(&model.Kost{}, "ID_Kost = ?", stringId).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Delete(&model.Kost{}, "Id = ?", stringId).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete kost with ID_Kost `" + stringId + "`",
+		"message": "success delete kost with Id `" + stringId + "`",
 	})
 }
 
 func UpdateKostController(c echo.Context) error {
 	kost := model.Kost{}
 	c.Bind(&kost)
-	stringId := c.Param("ID_Kost")
-	err := config.DB.Model(&kost).Where("ID_Kost = ?", stringId).Updates(kost).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Model(&kost).Where("Id = ?", stringId).Updates(kost).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

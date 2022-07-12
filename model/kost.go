@@ -1,7 +1,7 @@
 package model
 
 type Kost struct {
-	ID_Kost         int    `gorm:"primaryKey" json:"ID_Kost"`
+	Id              int    `gorm:"primaryKey" json:"Id"`
 	Nama_Kost       string `json:"Nama_Kost"`
 	Jenis_Kost      string `json:"Jenis_Kost"`
 	Fasilitas       string `json:"Fasilitas"`
@@ -9,7 +9,7 @@ type Kost struct {
 	Alamat_Kost     string `json:"Alamat_Kost"`
 	Kota            string `json:"Kota"`
 	Stok            int    `json:"Stok"`
-	PEMILIK_ID      int    `json:"PEMILIK_ID"`
+	Pemilik_Id      int    `json:"Pemilik_Id"`
 }
 
 func (Kost) TableName() string {

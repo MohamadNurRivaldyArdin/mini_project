@@ -1,11 +1,12 @@
 package model
 
 type Admin struct {
-	ID           int    `gorm:"primaryKey" json:"ID"`
-	User_Name    string `json:"User_Name"`
-	Password     int    `json:"Password"`
-	KOST_ID_Kost int    `json:"KOST_ID_Kost"`
-	PEMILIK_ID   int    `json:"PEMILIK_ID "`
+	Id         int    `gorm:"primaryKey" json:"Id"`
+	Nama       string `json:"Nama"`
+	Email      string `json:"Email"`
+	Password   int    `json:"Password"`
+	Kost_Id    int    `json:"Kost_Id"`
+	Pemilik_Id int    `json:"Pemilik_Id "`
 }
 
 // type GuestResponse struct {

@@ -1,7 +1,7 @@
 package model
 
 type Pemilik struct {
-	ID            int    `gorm:"primaryKey" json:"ID"`
+	Id            int    `gorm:"primaryKey" json:"Id"`
 	Nama          string `json:"Nama"`
 	Alamat        string `json:"Alamat"`
 	Telepon       int    `json:"Telepon"`

@@ -40,21 +40,21 @@ func GetPemesananController(c echo.Context) error {
 }
 
 func DeletePemesananController(c echo.Context) error {
-	stringId := c.Param("ID_Pemesanan")
-	err := config.DB.Delete(&model.Pemesanan{}, "ID_Pemesanan = ?", stringId).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Delete(&model.Pemesanan{}, "Id = ?", stringId).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete pemesanan with ID_Pemesanan `" + stringId + "`",
+		"message": "success delete pemesanan with Id `" + stringId + "`",
 	})
 }
 
 func UpdatePemesananController(c echo.Context) error {
 	pemesanan := model.Pemesanan{}
 	c.Bind(&pemesanan)
-	stringId := c.Param("ID_Pemesanan")
-	err := config.DB.Model(&pemesanan).Where("ID_Pemesanan = ?", stringId).Updates(pemesanan).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Model(&pemesanan).Where("Id = ?", stringId).Updates(pemesanan).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

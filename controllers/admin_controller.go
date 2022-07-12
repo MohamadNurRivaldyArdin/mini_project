@@ -40,21 +40,21 @@ func GetAdminController(c echo.Context) error {
 }
 
 func DeleteAdminController(c echo.Context) error {
-	stringId := c.Param("ID")
-	err := config.DB.Delete(&model.Admin{}, "ID = ?", stringId).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Delete(&model.Admin{}, "Id = ?", stringId).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete account with idadmin `" + stringId + "`",
+		"message": "success delete account with IdAdmin `" + stringId + "`",
 	})
 }
 
 func UpdateAdminController(c echo.Context) error {
 	admin := model.Admin{}
 	c.Bind(&admin)
-	stringId := c.Param("ID")
-	err := config.DB.Model(&admin).Where("ID = ?", stringId).Updates(admin).Debug().Error
+	stringId := c.Param("Id")
+	err := config.DB.Model(&admin).Where("Id = ?", stringId).Updates(admin).Debug().Error
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
