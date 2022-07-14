@@ -60,7 +60,7 @@ func DeletePengunjungController(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete account with Idpengunjung `" + stringId + "`",
+		"message": "success delete account with IdPengunjung `" + stringId + "`",
 	})
 }
 

@@ -4,17 +4,19 @@ type Admin struct {
 	Id         int    `gorm:"primaryKey" json:"Id"`
 	Nama       string `json:"Nama"`
 	Email      string `json:"Email"`
-	Password   int    `json:"Password"`
-	Kost_Id    int    `json:"Kost_Id"`
-	Pemilik_Id int    `json:"Pemilik_Id "`
+	Password   string `json:"Password"`
+	Kost_Id    int    `json:"_"`
+	Pemilik_Id int    `json:"_"`
+	// Kost       Kost    `json:"Kost" gorm:"foreignKey:Kost_Id_;references:Id"`
+	// Pemilik    Pemilik `json:"Pemilik" gorm:"foreignKey:Pemilik_Id;references:Id"`
 }
 
-// type GuestResponse struct {
-// 	Id    int    `json: "id" form: "id"`
-// 	Email string `json: "email" form: "email"`
-// 	Name  string `json: "name" form: "name"`
-// 	Token string `json: "token" form: "token"`
-// }
+type AdminResponse struct {
+	ID    int    `json: "ID" form: "ID"`
+	Email string `json: "email" form: "Email"`
+	Nama  string `json: "name" form: "Nama"`
+	Token string `json: "token" form: "Token"`
+}
 
 func (Admin) TableName() string {
 	return "admin"

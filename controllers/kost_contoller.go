@@ -46,7 +46,7 @@ func DeleteKostController(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete kost with Id `" + stringId + "`",
+		"message": "success delete kost with IdKost `" + stringId + "`",
 	})
 }
 

@@ -1,17 +1,23 @@
 package routes
 
 import (
+	"mini_project/constants"
 	"mini_project/controllers"
 
 	"github.com/labstack/echo/v4"
-	// mid "github.com/labstack/echo/v4/middleware"
+	mid "github.com/labstack/echo/v4/middleware"
 )
 
 func New() *echo.Echo {
 	e := echo.New()
 
-	// eJwt := e.Group("/jwt")
-	// eJwt.Use(mid.JWT([]byte(constants.SECRET_JWT)))
+	eJwt := e.Group("/jwt")
+	eJwt.Use(mid.JWT([]byte(constants.SECRET_JWT)))
+
+	// route login
+	e.POST("/login/admin", controllers.LoginControllerAdmin)
+	e.POST("/login/pemilik", controllers.LoginControllerPemilik)
+	e.POST("/login/pengunjung", controllers.LoginControllerPengunjung)
 
 	// route admin
 	e.GET("/admin", controllers.GetAdminController)
